@@ -1,0 +1,466 @@
+/* ==========================================================================
+   Global / Order Management Variables & Base Setup
+   ========================================================================== */
+:root {
+  --op-bg: #0f172a;
+  --op-card-bg: #1e293b;
+  --op-border: #334155;
+  --op-text-main: #f8fafc;
+  --op-text-muted: #94a3b8;
+  --op-accent: #6366f1;
+  --op-accent-hover: #4f46e5;
+
+  --op-orange: #f59e0b;
+  --op-blue: #3b82f6;
+  --op-green: #10b981;
+  --op-red: #ef4444;
+  --op-purple: #8b5cf6;
+}
+
+.op-page * {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Order Management Page Layout
+   ========================================================================== */
+.op-page {
+  min-height: 100vh;
+  background-color: var(--op-bg);
+  color: var(--op-text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 2rem 1.5rem;
+}
+
+.op-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Header Section
+   ========================================================================== */
+.op-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.op-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--op-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.op-eyebrow span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--op-accent);
+}
+
+.op-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.op-header h1 span {
+  color: var(--op-accent);
+}
+
+.op-header p {
+  color: var(--op-text-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.op-refresh-button {
+  background-color: var(--op-card-bg);
+  color: var(--op-text-main);
+  border: 1px solid var(--op-border);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.op-refresh-button:hover {
+  border-color: var(--op-accent);
+  background-color: #26334d;
+}
+
+/* ==========================================================================
+   Stats Cards Grid
+   ========================================================================== */
+.op-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.op-stat-card {
+  background-color: var(--op-card-bg);
+  border: 1px solid var(--op-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.op-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.op-stat-icon.op-purple { background: rgba(139, 92, 246, 0.15); color: var(--op-purple); }
+.op-stat-icon.op-orange { background: rgba(245, 158, 11, 0.15); color: var(--op-orange); }
+.op-stat-icon.op-blue { background: rgba(59, 130, 246, 0.15); color: var(--op-blue); }
+.op-stat-icon.op-green { background: rgba(16, 185, 129, 0.15); color: var(--op-green); }
+
+.op-stat-card span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--op-text-muted);
+  text-transform: uppercase;
+}
+
+.op-stat-card strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.2rem 0;
+}
+
+.op-stat-card small {
+  font-size: 0.75rem;
+  color: var(--op-text-muted);
+}
+
+.op-orange-text { color: var(--op-orange) !important; }
+.op-blue-text { color: var(--op-blue) !important; }
+.op-green-text { color: var(--op-green) !important; }
+
+/* ==========================================================================
+   Revenue Banner
+   ========================================================================== */
+.op-revenue {
+  background: linear-gradient(90deg, #1e1b4b 0%, #1e293b 100%);
+  border: 1px solid var(--op-accent);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.op-revenue-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.op-revenue-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--op-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.op-revenue-left span {
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: var(--op-text-muted);
+}
+
+.op-revenue-left strong {
+  display: block;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.op-live {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--op-green);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.op-live i {
+  width: 8px;
+  height: 8px;
+  background-color: var(--op-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--op-green);
+}
+
+/* ==========================================================================
+   Main Content Card & Controls
+   ========================================================================== */
+.op-main-card {
+  background-color: var(--op-card-bg);
+  border: 1px solid var(--op-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.op-card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--op-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.op-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.op-title-line {
+  width: 4px;
+  height: 36px;
+  background-color: var(--op-accent);
+  border-radius: 2px;
+}
+
+.op-card-title h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.op-card-title p {
+  font-size: 0.85rem;
+  color: var(--op-text-muted);
+  margin: 0;
+}
+
+.op-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.op-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.op-search span {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--op-text-muted);
+}
+
+.op-search input {
+  background-color: var(--op-bg);
+  border: 1px solid var(--op-border);
+  color: var(--op-text-main);
+  padding: 0.55rem 2rem 0.55rem 2.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.op-search input:focus {
+  border-color: var(--op-accent);
+}
+
+.op-clear-btn {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--op-text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.op-filter {
+  background-color: var(--op-bg);
+  border: 1px solid var(--op-border);
+  color: var(--op-text-main);
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Data Table & Rows Formatting
+   ========================================================================== */
+.op-table-container {
+  min-height: 250px;
+}
+
+.op-table-scroll {
+  overflow-x: auto;
+}
+
+.op-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.op-table th {
+  background-color: rgba(15, 23, 42, 0.4);
+  padding: 1rem 1.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: var(--op-text-muted);
+  border-bottom: 1px solid var(--op-border);
+}
+
+.op-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--op-border);
+  font-size: 0.9rem;
+}
+
+.op-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.op-order-id span {
+  color: var(--op-accent);
+  font-weight: bold;
+}
+
+.op-customer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.op-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--op-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.op-customer strong {
+  display: block;
+}
+
+.op-customer small {
+  color: var(--op-text-muted);
+  font-size: 0.75rem;
+}
+
+.op-total {
+  color: var(--op-green);
+}
+
+/* Status Pills */
+.op-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.op-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.op-status-pending { background: rgba(245, 158, 11, 0.15); color: var(--op-orange); }
+.op-status-pending i { background-color: var(--op-orange); }
+
+.op-status-processing { background: rgba(59, 130, 246, 0.15); color: var(--op-blue); }
+.op-status-processing i { background-color: var(--op-blue); }
+
+.op-status-shipped { background: rgba(139, 92, 246, 0.15); color: var(--op-purple); }
+.op-status-shipped i { background-color: var(--op-purple); }
+
+.op-status-delivered { background: rgba(16, 185, 129, 0.15); color: var(--op-green); }
+.op-status-delivered i { background-color: var(--op-green); }
+
+.op-status-cancelled { background: rgba(239, 68, 68, 0.15); color: var(--op-red); }
+.op-status-cancelled i { background-color: var(--op-red); }
+
+/* ==========================================================================
+   State Indicators
+   ========================================================================== */
+.op-loading, .op-empty {
+  padding: 3rem;
+  text-align: center;
+  color: var(--op-text-muted);
+}
+
+.op-loader {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--op-border);
+  border-top-color: var(--op-accent);
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.op-empty-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.op-footer {
+  padding: 1rem 1.5rem;
+  background-color: rgba(15, 23, 42, 0.2);
+  color: var(--op-text-muted);
+  font-size: 0.85rem;
+}
+
+.op-footer strong {
+  color: var(--op-text-main);
+}
